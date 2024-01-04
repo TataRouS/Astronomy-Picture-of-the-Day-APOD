@@ -1,0 +1,23 @@
+{
+  "name": "DGZoomableImageView",
+  "version": "1.0.2",
+  "summary": "A zoomable, pan-able image view",
+  "homepage": "https://github.com/donggyushin/DGZoomableImageView",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE.md"
+  },
+  "authors": {
+    "donggyushin": "donggyu9410@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/donggyushin/DGZoomableImageView.git",
+    "tag": "1.0.2"
+  },
+  "platforms": {
+    "ios": "12.0"
+  },
+  "swift_versions": "5.5",
+  "source_files": "Sources/DGZoomableImageView/**/*",
+  "swift_version": "5.5"
+}
