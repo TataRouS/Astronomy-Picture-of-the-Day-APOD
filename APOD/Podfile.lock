@@ -1,0 +1,21 @@
+PODS:
+  - DGZoomableImageView (1.0.2)
+
+DEPENDENCIES:
+  - DGZoomableImageView (from `https://github.com/donggyushin/DGZoomableImageView.git`)
+
+EXTERNAL SOURCES:
+  DGZoomableImageView:
+    :git: https://github.com/donggyushin/DGZoomableImageView.git
+
+CHECKOUT OPTIONS:
+  DGZoomableImageView:
+    :commit: 67ac2ac85dba1e0eb638ae7e37d6b355dbd0a415
+    :git: https://github.com/donggyushin/DGZoomableImageView.git
+
+SPEC CHECKSUMS:
+  DGZoomableImageView: c7ee3a0940b9c79384a0b4469486871ae7abf68e
+
+PODFILE CHECKSUM: 6c3c2e64c02ce63220fa282bc4fc09b48c255b6d
+
+COCOAPODS: 1.14.3

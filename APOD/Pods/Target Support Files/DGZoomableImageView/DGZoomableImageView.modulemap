@@ -1,0 +1,6 @@
+framework module DGZoomableImageView {
+  umbrella header "DGZoomableImageView-umbrella.h"
+
+  export *
+  module * { export * }
+}
