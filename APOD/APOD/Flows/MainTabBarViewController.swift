@@ -16,7 +16,8 @@ class MainTabBarViewController: UITabBarController {
         viewControllers = [
             createViewController(PictureOfDayBuilder.build(), title: "APOD", image: UIImage(systemName: "photo")),
             createViewController(DatePictureBuilder.build(), title: "DateAPOD", image: UIImage(systemName: "photo.on.rectangle")),
-            createViewController(FavoriteBuilder.build(), title: "Favorite", image: UIImage(systemName: "star.fill"))
+            createViewController(FavoriteBuilder.build(), title: "Favorite", image: UIImage(systemName: "star.fill")),
+            createViewController(FavoriteToCollectionViewController(), title: "kkkk", image: UIImage(systemName: "heart"))
         ]
     }
     

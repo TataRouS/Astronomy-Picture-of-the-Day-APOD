@@ -2,6 +2,5 @@
 //  DatePictureContentView.swift
 //  APOD
 //
-//  Created by Irina on 14.12.2023.
+//  Created by Irina on 04.01.2024.
 //
-
