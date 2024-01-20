@@ -1,0 +1,6 @@
+framework module Pods_PictureOfTheDayWidgetExtension {
+  umbrella header "Pods-PictureOfTheDayWidgetExtension-umbrella.h"
+
+  export *
+  module * { export * }
+}

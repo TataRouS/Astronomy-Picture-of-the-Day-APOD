@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		095960A34D32DA28CB6663E9 /* Pods_APOD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 891AA934619DC56C7EEBFAAF /* Pods_APOD.framework */; };
+		1D0DBDEF5A5039986A872A81 /* Pods_PictureOfTheDayWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 314A8A899BFF11A0C7B24B3D /* Pods_PictureOfTheDayWidgetExtension.framework */; };
 		8C08207F2B1287A3001D3B22 /* DatePictureBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C08207E2B1287A3001D3B22 /* DatePictureBuilder.swift */; };
 		8C1B40662AF6656C00E4231A /* DatePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B40652AF6656C00E4231A /* DatePictureViewController.swift */; };
 		8C1B40682AF6698B00E4231A /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B40672AF6698B00E4231A /* URLExtension.swift */; };
@@ -101,7 +102,9 @@
 		21C26C0083EE3EA20D18F2B7 /* Pods-APODTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APODTests.release.xcconfig"; path = "Target Support Files/Pods-APODTests/Pods-APODTests.release.xcconfig"; sourceTree = "<group>"; };
 		2DA08DD23212F7401CE2CC04 /* Pods-APOD-APODUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APOD-APODUITests.release.xcconfig"; path = "Target Support Files/Pods-APOD-APODUITests/Pods-APOD-APODUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3014593BE16E6A203A4389B0 /* Pods-APOD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APOD.debug.xcconfig"; path = "Target Support Files/Pods-APOD/Pods-APOD.debug.xcconfig"; sourceTree = "<group>"; };
+		314A8A899BFF11A0C7B24B3D /* Pods_PictureOfTheDayWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PictureOfTheDayWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38A29EA132BAB8525F506CB7 /* Pods-APOD-APODUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APOD-APODUITests.debug.xcconfig"; path = "Target Support Files/Pods-APOD-APODUITests/Pods-APOD-APODUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6202E62833489CBA99158A63 /* Pods-PictureOfTheDayWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureOfTheDayWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-PictureOfTheDayWidgetExtension/Pods-PictureOfTheDayWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
 		891AA934619DC56C7EEBFAAF /* Pods_APOD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APOD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C08207E2B1287A3001D3B22 /* DatePictureBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureBuilder.swift; sourceTree = "<group>"; };
 		8C1B40652AF6656C00E4231A /* DatePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +118,7 @@
 		8C7A40F52B483E5800DE3D9C /* FavoritesToCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesToCollectionViewController.swift; sourceTree = "<group>"; };
 		8CB794882AFFADCE00F4964E /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		8CF58B732B1BB9D9005BCBA1 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		AB8641B8EE9A4D496A428AD1 /* Pods-PictureOfTheDayWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureOfTheDayWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-PictureOfTheDayWidgetExtension/Pods-PictureOfTheDayWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		AF4938BF35B9362103419A7C /* Pods-APODTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APODTests.debug.xcconfig"; path = "Target Support Files/Pods-APODTests/Pods-APODTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BD366FCD2AE86DF90068E36C /* NetworkServiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiece.swift; sourceTree = "<group>"; };
 		BD42F0652ADDA182006C0518 /* APOD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APOD.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +193,7 @@
 			files = (
 				DD8E1EA62B26076F003F6762 /* SwiftUI.framework in Frameworks */,
 				DD8E1EA42B26076F003F6762 /* WidgetKit.framework in Frameworks */,
+				1D0DBDEF5A5039986A872A81 /* Pods_PictureOfTheDayWidgetExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +209,8 @@
 				2DA08DD23212F7401CE2CC04 /* Pods-APOD-APODUITests.release.xcconfig */,
 				AF4938BF35B9362103419A7C /* Pods-APODTests.debug.xcconfig */,
 				21C26C0083EE3EA20D18F2B7 /* Pods-APODTests.release.xcconfig */,
+				AB8641B8EE9A4D496A428AD1 /* Pods-PictureOfTheDayWidgetExtension.debug.xcconfig */,
+				6202E62833489CBA99158A63 /* Pods-PictureOfTheDayWidgetExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -216,6 +223,7 @@
 				DA5E4337846943A19F20CBCB /* Pods_APODTests.framework */,
 				DD8E1EA32B26076F003F6762 /* WidgetKit.framework */,
 				DD8E1EA52B26076F003F6762 /* SwiftUI.framework */,
+				314A8A899BFF11A0C7B24B3D /* Pods_PictureOfTheDayWidgetExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -590,6 +598,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD8E1EB92B260770003F6762 /* Build configuration list for PBXNativeTarget "PictureOfTheDayWidgetExtension" */;
 			buildPhases = (
+				B202B48EA679F1BC344599CF /* [CP] Check Pods Manifest.lock */,
 				DD8E1E9E2B26076F003F6762 /* Sources */,
 				DD8E1E9F2B26076F003F6762 /* Frameworks */,
 				DD8E1EA02B26076F003F6762 /* Resources */,
@@ -762,6 +771,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-APOD-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B202B48EA679F1BC344599CF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PictureOfTheDayWidgetExtension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1132,6 +1163,7 @@
 		};
 		DD8E1EB72B260770003F6762 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB8641B8EE9A4D496A428AD1 /* Pods-PictureOfTheDayWidgetExtension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1165,6 +1197,7 @@
 		};
 		DD8E1EB82B260770003F6762 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6202E62833489CBA99158A63 /* Pods-PictureOfTheDayWidgetExtension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
