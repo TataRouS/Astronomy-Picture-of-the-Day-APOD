@@ -53,8 +53,10 @@ class DatePictureController: UIViewController {
     
     private let button: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "star"), for: .normal)
+        button.setImage(UIImage(named: "starNormal"), for: .normal)
+        //button.setImage(UIImage(systemName: "star"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        
         return button
     }()
     
@@ -177,6 +179,8 @@ class DatePictureController: UIViewController {
             button.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             button.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
+            button.widthAnchor.constraint(equalToConstant: 25),
+            button.heightAnchor.constraint(equalToConstant: 25),
             
             dateLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
@@ -216,11 +220,13 @@ class DatePictureController: UIViewController {
     @objc func tap(){
         print("Power")
         if starIsFilled {
-            button.setImage(UIImage(systemName: "star"), for: .normal)
+            //button.setImage(UIImage(systemName: "star"), for: .normal)
+            button.setImage(UIImage(named: "starNormal"), for: .normal)
             starIsFilled = false
             presenter?.deleteFavorite(apod: model ?? DataImage())
         }else{
-            button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            //button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            button.setImage(UIImage(named: "starFavorite"), for: .normal)
             starIsFilled = true
             presenter?.addFavorite(apod: model ?? DataImage())
         }
@@ -241,9 +247,11 @@ extension DatePictureController: DatePicturePresenterDelegate {
         starIsFilled = self.presenter?.checkFavoriteByDate(date: photoinfo.date ?? "") ?? false
         DispatchQueue.main.async {
             if self.starIsFilled {
-                self.button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+                //self.button.setImage(UIImage(systemName: "star.fill"), for: .normal)
+                self.button.setImage(UIImage(named: "starFavorite"), for: .normal)
             }else{
-                self.button.setImage(UIImage(systemName: "star"), for: .normal)
+               // self.button.setImage(UIImage(systemName: "star"), for: .normal)
+                self.button.setImage(UIImage(named: "starNormal"), for: .normal)
             }
         }
     }
