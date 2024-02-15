@@ -14,19 +14,20 @@ class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewControllers = [
-            createViewController(PictureOfDayBuilder.build(), title: "APOD", image: UIImage(systemName: "photo")),
-            createViewController(DatePictureBuilder.build(), title: "DateAPOD", image: UIImage(systemName: "photo.on.rectangle")),
-            createViewController(FavoriteBuilder.build(), title: "Favorite", image: UIImage(systemName: "star.fill")),
-            createViewController(FavoriteToCollectionViewController(), title: "kkkk", image: UIImage(systemName: "heart"))
+            createViewController(PictureOfDayBuilder.build(), image: UIImage(systemName: "photo"), titleBar: "APOD"),
+            createViewController(DatePictureBuilder.build(),image: UIImage(systemName: "photo.on.rectangle"), titleBar: "DateAPOD"),
+            createViewController(FavoriteBuilder.build(), image: UIImage(systemName: "star.fill"), titleBar: "Favorite"),
+            createViewController(FavoriteToCollectionViewController(), image: UIImage(systemName: "heart"), titleBar: "Favorite")
         ]
     }
     
     //MARK: - Private functions
     
-    private func createViewController(_ viewController: UIViewController, title: String, image: UIImage?) -> UINavigationController {
+    private func createViewController(_ viewController: UIViewController, image: UIImage?, titleBar: String) -> UINavigationController {
         let navController = UINavigationController(rootViewController: viewController)
-        navController.title = title
+        //navController.title = title
         navController.tabBarItem.image = image
+        navController.tabBarItem.title = titleBar
         return navController
     }
 }
