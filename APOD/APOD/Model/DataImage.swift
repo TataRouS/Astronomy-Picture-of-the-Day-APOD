@@ -12,6 +12,7 @@ struct DataImage: Decodable {
     var hdurl: String?
     var mediaType, serviceVersion, title: String?
     var url: URL?
+    var imageBinaryData: Data?
 
     enum CodingKeys: String, CodingKey {
         case copyright, date, explanation, hdurl

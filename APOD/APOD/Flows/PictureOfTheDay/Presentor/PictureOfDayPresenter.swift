@@ -111,11 +111,12 @@ extension PictureOfDayPresenter: PictureOfDayProtocol {
     }
     
     func didTapFavoriteButton() {
-        guard let strongCurrentImageModel = currentImageModel else {
+        guard var strongCurrentImageModel = currentImageModel else {
             delegate?.showState(.error(.unknownError))
             return
         }
         
+        strongCurrentImageModel.imageBinaryData = currentImage?.pngData()
         dataStoreService.addPictureToFavoriteIfNeeded(apod: strongCurrentImageModel)
     }
 

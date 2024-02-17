@@ -4,6 +4,7 @@
         <attribute name="date" attributeType="String"/>
         <attribute name="explanation" attributeType="String"/>
         <attribute name="picture" attributeType="String"/>
+        <attribute name="pictureBinaryData" optional="YES" attributeType="Binary"/>
         <attribute name="title" attributeType="String"/>
     </entity>
 </model>

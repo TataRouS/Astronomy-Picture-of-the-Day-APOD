@@ -97,19 +97,17 @@ class Favorite: UITableViewController {
         print("UpdateFunction", viewModels)
         let models = presenter?.fetchPictures() ?? []
         
-        DispatchQueue.global ().async {
+//        DispatchQueue.global ().async {
             var viewModels: [DataViewImage] = []
-            for model in models {
-                if let url = URL (string: model.hdurl ?? ""), let data = try?
-                    Data(contentsOf: url)
-                {
-                    viewModels.append(DataViewImage( copyright: model.copyright, date: model.date, explanation: model.explanation, data: data, title: model.title))
-                }
+        for model in models {
+            //                if let url = URL (string: model.hdurl ?? ""), let data = try?
+            //                    Data(contentsOf: url) {
+            if let data = model.imageBinaryData {
+                viewModels.append(DataViewImage( copyright: model.copyright, date: model.date, explanation: model.explanation, data: data , title: model.title))
             }
+        }
             self.viewModels = viewModels
             self.updateView(viewModels: self.viewModels)
-        }
-        
     }
     
     //MARK: - Private functions
