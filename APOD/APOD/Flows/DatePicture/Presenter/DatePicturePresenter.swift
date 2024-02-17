@@ -38,6 +38,7 @@ extension DatePicturePresenter: DatePicturePresenterProtocol {
     func deleteFavorite(apod: DataImage) {
         fileCache.addPictureToFavoriteIfNeeded(apod: apod)
        // fileCache.deletePicture(date: apod)
+        print("IfNEededdelete")
     }
     
     func checkFavoriteByDate(date: String) -> Bool {
@@ -46,6 +47,7 @@ extension DatePicturePresenter: DatePicturePresenterProtocol {
     
     func addFavorite(apod: DataImage) {
         fileCache.addPictureToFavoriteIfNeeded(apod: apod)
+        print("IfNEededAdd")
     }
     
     func viewDidLoad() {

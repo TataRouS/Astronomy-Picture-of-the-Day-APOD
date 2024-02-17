@@ -79,6 +79,7 @@ final class DataStoreService {
         apodModel.explanation = apod.explanation
         apodModel.picture = apod.hdurl
         apodModel.date = apod.date
+        apodModel.pictureBinaryData = apod.imageBinaryData
         
         saveStateIfNeeded()
         print("Запись в базу", apodModel)
@@ -122,7 +123,8 @@ extension DataStoreService: DataStoreServiceProtocol {
             favoriteApods.append(DataImage (date: apod.date,
                                             explanation: apod.explanation,
                                             hdurl: apod.picture,
-                                            title: apod.title))
+                                            title: apod.title,
+                                            imageBinaryData: apod.pictureBinaryData))
         }
         print("Date favoriteApods:", favoriteApods)
         return favoriteApods
