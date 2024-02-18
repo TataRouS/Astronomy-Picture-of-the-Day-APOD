@@ -20,6 +20,7 @@
 		8C7A40F42B483E4600DE3D9C /* FavoritesToCollectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A40F32B483E4600DE3D9C /* FavoritesToCollectionPresenter.swift */; };
 		8C7A40F62B483E5800DE3D9C /* FavoritesToCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A40F52B483E5800DE3D9C /* FavoritesToCollectionViewController.swift */; };
 		8CB794892AFFADCE00F4964E /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB794882AFFADCE00F4964E /* Favorite.swift */; };
+		8CC713CA2B81F870006DAB11 /* FaforiteCellToCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC713C92B81F870006DAB11 /* FaforiteCellToCollection.swift */; };
 		8CF58B742B1BB9D9005BCBA1 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF58B732B1BB9D9005BCBA1 /* MainTabBarViewController.swift */; };
 		9D2D6A84637815354A24B8A8 /* Pods_APODTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5E4337846943A19F20CBCB /* Pods_APODTests.framework */; };
 		BD366FCE2AE86DF90068E36C /* NetworkServiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD366FCD2AE86DF90068E36C /* NetworkServiece.swift */; };
@@ -117,6 +118,7 @@
 		8C7A40F32B483E4600DE3D9C /* FavoritesToCollectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesToCollectionPresenter.swift; sourceTree = "<group>"; };
 		8C7A40F52B483E5800DE3D9C /* FavoritesToCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesToCollectionViewController.swift; sourceTree = "<group>"; };
 		8CB794882AFFADCE00F4964E /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
+		8CC713C92B81F870006DAB11 /* FaforiteCellToCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaforiteCellToCollection.swift; sourceTree = "<group>"; };
 		8CF58B732B1BB9D9005BCBA1 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		AB8641B8EE9A4D496A428AD1 /* Pods-PictureOfTheDayWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureOfTheDayWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-PictureOfTheDayWidgetExtension/Pods-PictureOfTheDayWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		AF4938BF35B9362103419A7C /* Pods-APODTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APODTests.debug.xcconfig"; path = "Target Support Files/Pods-APODTests/Pods-APODTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				8C7A40F52B483E5800DE3D9C /* FavoritesToCollectionViewController.swift */,
+				8CC713C92B81F870006DAB11 /* FaforiteCellToCollection.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -847,6 +850,7 @@
 				8C7A40F62B483E5800DE3D9C /* FavoritesToCollectionViewController.swift in Sources */,
 				8C7A40F42B483E4600DE3D9C /* FavoritesToCollectionPresenter.swift in Sources */,
 				BD439B1B2B17B18900814B15 /* FavoriteCell.swift in Sources */,
+				8CC713CA2B81F870006DAB11 /* FaforiteCellToCollection.swift in Sources */,
 				BD439B1D2B19072400814B15 /* PictureOfDayContentView.swift in Sources */,
 				BD439B212B19092C00814B15 /* PictureOfDayLoadingView.swift in Sources */,
 				BD439B132B179BD800814B15 /* FavoritePresenter.swift in Sources */,
