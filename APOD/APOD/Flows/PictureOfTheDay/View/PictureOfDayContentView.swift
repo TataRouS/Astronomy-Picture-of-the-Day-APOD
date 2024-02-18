@@ -20,11 +20,12 @@ class PictureOfDayContentView: UIView {
     
     private let addToFavoriteButton: UIButton = {
         let button = UIButton()
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 15
-        button.backgroundColor = .systemBlue
-        button.tintColor = .white
+        //button.setTitleColor(.yellow, for: .normal)
+        //button.layer.cornerRadius = 15
+        //button.backgroundColor = .systemBlue
+       // button.tintColor = .red
         button.translatesAutoresizingMaskIntoConstraints = false
+        //button.setImage(UIImage(named: "starFavorite"), for: .normal)
         return button
     }()
     
@@ -64,7 +65,9 @@ class PictureOfDayContentView: UIView {
     private var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
-        imageView.backgroundColor = .systemGray6
+        //imageView.backgroundColor = .systemGray6
+        imageView.layer.cornerRadius = 2
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -126,7 +129,8 @@ class PictureOfDayContentView: UIView {
         stackView.addArrangedSubview(addToFavoritesView)
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(descriptionLabel)
-        stackView.addArrangedSubview(addToFavoritesView)
+        //stackView.addArrangedSubview(addToFavoritesView)
+        imageView.addSubview(addToFavoritesView)
         addToFavoritesView.addSubview(addToFavoriteButton)
         
         scrollViewContentView.addSubview(stackView)
@@ -154,11 +158,18 @@ class PictureOfDayContentView: UIView {
             stackView.trailingAnchor.constraint(equalTo: scrollViewContentView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor),
             
-            imageView.widthAnchor.constraint(equalTo: widthAnchor),
-            imageView.heightAnchor.constraint(equalTo: widthAnchor),
+//            imageView.widthAnchor.constraint(equalTo: widthAnchor),
+//            imageView.heightAnchor.constraint(equalTo: widthAnchor),
             
-            addToFavoritesView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            addToFavoritesView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            imageView.widthAnchor.constraint(equalTo: widthAnchor, constant: -20),
+            imageView.heightAnchor.constraint(equalTo: widthAnchor, constant: -20),
+            
+//            addToFavoritesView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+//            addToFavoritesView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            addToFavoritesView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -20),
+            addToFavoritesView.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 0),
+            //addToFavoritesView.heightAnchor.constraint(equalToConstant: 50),
+            addToFavoritesView.widthAnchor.constraint(equalToConstant: 50),
             
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
@@ -177,9 +188,13 @@ class PictureOfDayContentView: UIView {
     }
     
     private func updateFavoriteButtonState() {
-        let starImageName = starIsFilled ? "star.fill": "star"
-        addToFavoriteButton.setImage(UIImage(systemName: starImageName), for: .normal)
-        addToFavoriteButton.backgroundColor = starIsFilled ? .systemGray4: .systemBlue
-        addToFavoriteButton.setTitle(starIsFilled ? "Remove from favorite": "Add to favorite", for: .normal)
+        //let starImageName = starIsFilled ? "star.fill": "star"
+        //addToFavoriteButton.setImage(UIImage(systemName: starImageName), for: .normal)
+        //addToFavoriteButton.backgroundColor = starIsFilled ? .systemGray4: .systemBlue
+        //addToFavoriteButton.setTitle(starIsFilled ? "Remove from favorite": "Add to favorite", for: .normal)
+        
+        let starImageName = starIsFilled ? "starFavorite": "starNormal"
+        addToFavoriteButton.setImage(UIImage(named: starImageName), for: .normal)
+
     }
 }
