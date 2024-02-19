@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "nasa0.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "nasa0.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
