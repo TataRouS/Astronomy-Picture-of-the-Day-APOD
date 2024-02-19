@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "starFavorite.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "starFavorite.png.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
