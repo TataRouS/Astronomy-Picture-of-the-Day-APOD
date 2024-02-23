@@ -22,6 +22,7 @@ class DatePictureController: UIViewController {
     let networkController = NetworkService()
     let dateFormatter = DateFormatter()
     
+    
     //MARK: - Private properties
     
     private var model: DataImage?
@@ -243,7 +244,9 @@ extension DatePictureController: DatePicturePresenterDelegate {
                 self?.labelDescriptions.text = photoinfo.explanation
             }
             self?.model = photoinfo
+            self?.model?.imageBinaryData = image?.pngData()
         }
+        
         starIsFilled = self.presenter?.checkFavoriteByDate(date: photoinfo.date ?? "") ?? false
         DispatchQueue.main.async {
             if self.starIsFilled {
