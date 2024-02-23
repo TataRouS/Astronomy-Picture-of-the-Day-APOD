@@ -1,5 +1,5 @@
 //
-//  ApodPresenter.swift
+//  PictureOfDayPresenter.swift
 //  APOD
 //
 //  Created by Nata Kuznetsova on 17.11.2023.
