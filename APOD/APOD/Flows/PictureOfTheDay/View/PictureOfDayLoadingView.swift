@@ -18,12 +18,20 @@ class PictureOfDayLoadingView: UIView {
         return loader
     }()
     
+    private var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.isUserInteractionEnabled = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "4")
+        return imageView
+    }()
+    
     private var label: UILabel = {
         let label = UILabel()
         label.backgroundColor = .white
         label.textColor = .black
         label.textAlignment = .left
-        label.font = UIFont(name: "AvenirNext-Bold", size: 50)
+        label.font = UIFont(name: "AvenirNext-Bold", size: 45)
         label.numberOfLines = 0
         label.text = "Astronomy\nPicture\nOf the\nDay"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -66,13 +74,18 @@ class PictureOfDayLoadingView: UIView {
     private func setupView() {
         backgroundColor = .white
         
+        stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(label)
         stackView.addArrangedSubview(loader)
         addSubview(stackView)
         
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            imageView.widthAnchor.constraint(equalToConstant: 240),
+            imageView.heightAnchor.constraint(equalToConstant: 240),
+            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
     }
 }

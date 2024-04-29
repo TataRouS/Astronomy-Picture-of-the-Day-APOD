@@ -26,21 +26,12 @@ class Favorite: UITableViewController {
     
     var presenter: FavoritePresenterProtocol?
     
-    
     //MARK: - Private properties
     
     // private var models: [DataImage] = []
     private var viewModels: [DataViewImage] = []
     
     //MARK: - Construction
-    
-    //    init() {
-    //        super.init(nibName: nil, bundle: nil)
-    //    }
-    //
-    //    required init?(coder: NSCoder) {
-    //        fatalError("init(coder:) has nit been implemented")
-    //    }
     
     //MARK: - Life cycle
     
@@ -55,6 +46,8 @@ class Favorite: UITableViewController {
         update()
         title = "Favorite"
         tableView.register(FavoriteCell.self, forCellReuseIdentifier: "Cell")
+        //убирает линию справа при скролле
+        tableView.showsVerticalScrollIndicator = false
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(update), for: .valueChanged)
     }
@@ -137,6 +130,13 @@ extension Favorite: FavoritePresenterDelegate {
     
     func showError(error: Error, date: Date) {
         print("Error here: ", error)
+    }
+}
+
+extension Favorite {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = viewModels[indexPath.row]
+        navigationController?.pushViewController(DetailedFavorite(with: model), animated: true)
     }
 }
 
