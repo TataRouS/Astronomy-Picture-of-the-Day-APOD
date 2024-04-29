@@ -33,7 +33,7 @@ class DatePictureController: UIViewController {
         label.backgroundColor = .white
         label.textColor = .systemBlue
         label.textAlignment = .center
-        label.text = "Выбери дату"
+        label.text = "Select a date"
         label.font = UIFont.systemFont(ofSize: 20, weight: .light)
         //label.font = UIFont(name: "AvenirNext-DemiBold", size: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -133,8 +133,22 @@ class DatePictureController: UIViewController {
         setupView()
         setInitView()
         presenter?.viewDidLoad()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapGesture))
+        tapGesture.numberOfTapsRequired = 1
+        tapGesture.numberOfTouchesRequired = 1
+        imageView.addGestureRecognizer(tapGesture)
     }
     
+    @objc func viewTapGesture(gesture:UITapGestureRecognizer) {
+        guard let image = imageView.image else {
+            return
+        }
+        let imagePreviewScreen = ImagePreviewScreenBuilder.build(image: image)
+        imagePreviewScreen.modalPresentationStyle = .fullScreen
+        present(imagePreviewScreen, animated: false)
+    }
+
     //MARK: - Functions
     
     @objc func datePickerAction(sender: UIDatePicker) {

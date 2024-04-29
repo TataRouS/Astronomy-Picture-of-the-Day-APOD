@@ -123,6 +123,8 @@ final class FavoriteCell: UITableViewCell {
         super.prepareForReuse()
         text1.text = nil
     }
+    
+    
 }
 
 ////

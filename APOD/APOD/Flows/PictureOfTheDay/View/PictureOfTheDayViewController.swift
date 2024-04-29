@@ -38,6 +38,7 @@ class PictureOfTheDayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarItem.title = "APOD"
         setupViews()
         presenter?.viewDidLoad()
     }
@@ -147,6 +148,7 @@ extension PictureOfTheDayViewController: PictureOfDayPresenterDelegate {
     func processLoadedState(_ contentModel: PictureOfDayViewModel) {
         navigationController?.setNavigationBarHidden(false, animated: true)
         title = contentModel.title
+        tabBarItem.title = "APOD"
         contentView.setupViewWithModel(contentModel)
         contentView.isHidden = false
     }
@@ -154,6 +156,7 @@ extension PictureOfTheDayViewController: PictureOfDayPresenterDelegate {
     func resetState() {
         navigationController?.setNavigationBarHidden(true, animated: true)
         title = ""
+        tabBarItem.title = "APOD"
         contentView.isHidden = true
         loadingView.isHidden = true
         errorView.isHidden = true

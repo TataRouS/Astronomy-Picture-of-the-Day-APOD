@@ -66,8 +66,8 @@ class PictureOfDayContentView: UIView {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
         //imageView.backgroundColor = .systemGray6
-        imageView.layer.cornerRadius = 2
-        imageView.clipsToBounds = true
+        //imageView.layer.cornerRadius = 2
+        //imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -158,11 +158,8 @@ class PictureOfDayContentView: UIView {
             stackView.trailingAnchor.constraint(equalTo: scrollViewContentView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor),
             
-//            imageView.widthAnchor.constraint(equalTo: widthAnchor),
-//            imageView.heightAnchor.constraint(equalTo: widthAnchor),
-            
-            imageView.widthAnchor.constraint(equalTo: widthAnchor, constant: -20),
-            imageView.heightAnchor.constraint(equalTo: widthAnchor, constant: -20),
+            imageView.widthAnchor.constraint(equalTo: widthAnchor),
+            imageView.heightAnchor.constraint(equalTo: widthAnchor),
             
 //            addToFavoritesView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
 //            addToFavoritesView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),

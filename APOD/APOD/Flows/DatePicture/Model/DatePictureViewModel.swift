@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct DatePictureViewModel {
-    //let isFavorite: Bool
+    let isFavorite: Bool
     let image: UIImage?
     let title: String?
     let description: String?
