@@ -39,6 +39,9 @@
 		BD439B1F2B19073A00814B15 /* PictureOfDayErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD439B1E2B19073A00814B15 /* PictureOfDayErrorView.swift */; };
 		BD439B212B19092C00814B15 /* PictureOfDayLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD439B202B19092C00814B15 /* PictureOfDayLoadingView.swift */; };
 		BD439B3B2B1CC70A00814B15 /* FavoriteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD439B3A2B1CC70A00814B15 /* FavoriteBuilder.swift */; };
+		BDF728152C7CA78400D66564 /* DatePictureLoadingViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF728142C7CA78400D66564 /* DatePictureLoadingViews.swift */; };
+		BDF728172C7CA7B300D66564 /* DatePictureErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF728162C7CA7B300D66564 /* DatePictureErrorView.swift */; };
+		BDF728192C7CA7E500D66564 /* DatePictureContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF728182C7CA7E500D66564 /* DatePictureContentView.swift */; };
 		CC02E5B783B011799D4FE971 /* Pods_APOD_APODUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E326D6F08126CE57E25E6411 /* Pods_APOD_APODUITests.framework */; };
 		DD8E1EA42B26076F003F6762 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8E1EA32B26076F003F6762 /* WidgetKit.framework */; };
 		DD8E1EA62B26076F003F6762 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8E1EA52B26076F003F6762 /* SwiftUI.framework */; };
@@ -139,6 +142,9 @@
 		BD439B1E2B19073A00814B15 /* PictureOfDayErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfDayErrorView.swift; sourceTree = "<group>"; };
 		BD439B202B19092C00814B15 /* PictureOfDayLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfDayLoadingView.swift; sourceTree = "<group>"; };
 		BD439B3A2B1CC70A00814B15 /* FavoriteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBuilder.swift; sourceTree = "<group>"; };
+		BDF728142C7CA78400D66564 /* DatePictureLoadingViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureLoadingViews.swift; sourceTree = "<group>"; };
+		BDF728162C7CA7B300D66564 /* DatePictureErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureErrorView.swift; sourceTree = "<group>"; };
+		BDF728182C7CA7E500D66564 /* DatePictureContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureContentView.swift; sourceTree = "<group>"; };
 		CA5808A8ABF88A488BAF54E1 /* Pods-APOD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APOD.release.xcconfig"; path = "Target Support Files/Pods-APOD/Pods-APOD.release.xcconfig"; sourceTree = "<group>"; };
 		DA5E4337846943A19F20CBCB /* Pods_APODTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APODTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD8E1EA22B26076F003F6762 /* PictureOfTheDayWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PictureOfTheDayWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -380,6 +386,9 @@
 			isa = PBXGroup;
 			children = (
 				8C1B40652AF6656C00E4231A /* DatePictureViewController.swift */,
+				BDF728142C7CA78400D66564 /* DatePictureLoadingViews.swift */,
+				BDF728162C7CA7B300D66564 /* DatePictureErrorView.swift */,
+				BDF728182C7CA7E500D66564 /* DatePictureContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -789,8 +798,10 @@
 				8CF58B742B1BB9D9005BCBA1 /* MainTabBarViewController.swift in Sources */,
 				BD439B1F2B19073A00814B15 /* PictureOfDayErrorView.swift in Sources */,
 				BD366FCE2AE86DF90068E36C /* NetworkServiece.swift in Sources */,
+				BDF728152C7CA78400D66564 /* DatePictureLoadingViews.swift in Sources */,
 				DDA944C22B23D7CB00C7C947 /* PictureOfDayErrorViewModel.swift in Sources */,
 				8C4DC52B2B273079003B6F90 /* DatePictureViewModel.swift in Sources */,
+				BDF728192C7CA7E500D66564 /* DatePictureContentView.swift in Sources */,
 				DDA944C52B248D0600C7C947 /* ImagePreviewScreenViewController.swift in Sources */,
 				8CB794892AFFADCE00F4964E /* Favorite.swift in Sources */,
 				BD42F0692ADDA182006C0518 /* AppDelegate.swift in Sources */,
@@ -806,6 +817,7 @@
 				8C4FFBAC2BDBA67900903377 /* DetailedFavorite.swift in Sources */,
 				BD439B062B0F745900814B15 /* DatePicturePresenter.swift in Sources */,
 				DDA944CC2B24909000C7C947 /* ImagePreviewScreenBuilder.swift in Sources */,
+				BDF728172C7CA7B300D66564 /* DatePictureErrorView.swift in Sources */,
 				BD439B3B2B1CC70A00814B15 /* FavoriteBuilder.swift in Sources */,
 				BD439B1B2B17B18900814B15 /* FavoriteCell.swift in Sources */,
 				BD439B1D2B19072400814B15 /* PictureOfDayContentView.swift in Sources */,
