@@ -122,32 +122,32 @@ class DatePictureController: UIViewController {
     
     //MARK: - Life cycle
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        presenter?.viewDidLoad()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        setupView()
-        setInitView()
-        presenter?.viewDidLoad()
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapGesture))
-        tapGesture.numberOfTapsRequired = 1
-        tapGesture.numberOfTouchesRequired = 1
-        imageView.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc func viewTapGesture(gesture:UITapGestureRecognizer) {
-        guard let image = imageView.image else {
-            return
-        }
-        let imagePreviewScreen = ImagePreviewScreenBuilder.build(image: image)
-        imagePreviewScreen.modalPresentationStyle = .fullScreen
-        present(imagePreviewScreen, animated: false)
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        presenter?.viewDidLoad()
+//    }
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        view.backgroundColor = .white
+//        setupView()
+//        setInitView()
+//        presenter?.viewDidLoad()
+//        
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapGesture))
+//        tapGesture.numberOfTapsRequired = 1
+//        tapGesture.numberOfTouchesRequired = 1
+//        imageView.addGestureRecognizer(tapGesture)
+//    }
+//    
+//    @objc func viewTapGesture(gesture:UITapGestureRecognizer) {
+//        guard let image = imageView.image else {
+//            return
+//        }
+//        let imagePreviewScreen = ImagePreviewScreenBuilder.build(image: image)
+//        imagePreviewScreen.modalPresentationStyle = .fullScreen
+//        present(imagePreviewScreen, animated: false)
+//    }
 
     //MARK: - Functions
     

@@ -39,6 +39,7 @@
 		BD439B1F2B19073A00814B15 /* PictureOfDayErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD439B1E2B19073A00814B15 /* PictureOfDayErrorView.swift */; };
 		BD439B212B19092C00814B15 /* PictureOfDayLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD439B202B19092C00814B15 /* PictureOfDayLoadingView.swift */; };
 		BD439B3B2B1CC70A00814B15 /* FavoriteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD439B3A2B1CC70A00814B15 /* FavoriteBuilder.swift */; };
+		BDB4220F2C975690009E557F /* DatePictureViewControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4220E2C975690009E557F /* DatePictureViewControllerNew.swift */; };
 		BDF728152C7CA78400D66564 /* DatePictureLoadingViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF728142C7CA78400D66564 /* DatePictureLoadingViews.swift */; };
 		BDF728172C7CA7B300D66564 /* DatePictureErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF728162C7CA7B300D66564 /* DatePictureErrorView.swift */; };
 		BDF728192C7CA7E500D66564 /* DatePictureContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF728182C7CA7E500D66564 /* DatePictureContentView.swift */; };
@@ -142,6 +143,7 @@
 		BD439B1E2B19073A00814B15 /* PictureOfDayErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfDayErrorView.swift; sourceTree = "<group>"; };
 		BD439B202B19092C00814B15 /* PictureOfDayLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfDayLoadingView.swift; sourceTree = "<group>"; };
 		BD439B3A2B1CC70A00814B15 /* FavoriteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBuilder.swift; sourceTree = "<group>"; };
+		BDB4220E2C975690009E557F /* DatePictureViewControllerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureViewControllerNew.swift; sourceTree = "<group>"; };
 		BDF728142C7CA78400D66564 /* DatePictureLoadingViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureLoadingViews.swift; sourceTree = "<group>"; };
 		BDF728162C7CA7B300D66564 /* DatePictureErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureErrorView.swift; sourceTree = "<group>"; };
 		BDF728182C7CA7E500D66564 /* DatePictureContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureContentView.swift; sourceTree = "<group>"; };
@@ -386,9 +388,10 @@
 			isa = PBXGroup;
 			children = (
 				8C1B40652AF6656C00E4231A /* DatePictureViewController.swift */,
-				BDF728142C7CA78400D66564 /* DatePictureLoadingViews.swift */,
-				BDF728162C7CA7B300D66564 /* DatePictureErrorView.swift */,
+				BDB4220E2C975690009E557F /* DatePictureViewControllerNew.swift */,
 				BDF728182C7CA7E500D66564 /* DatePictureContentView.swift */,
+				BDF728162C7CA7B300D66564 /* DatePictureErrorView.swift */,
+				BDF728142C7CA78400D66564 /* DatePictureLoadingViews.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -806,6 +809,7 @@
 				8CB794892AFFADCE00F4964E /* Favorite.swift in Sources */,
 				BD42F0692ADDA182006C0518 /* AppDelegate.swift in Sources */,
 				8C08207F2B1287A3001D3B22 /* DatePictureBuilder.swift in Sources */,
+				BDB4220F2C975690009E557F /* DatePictureViewControllerNew.swift in Sources */,
 				BD439B192B17A93C00814B15 /* DataStoreService.swift in Sources */,
 				DDA944C02B23BAB500C7C947 /* PictureOfDayViewModel.swift in Sources */,
 				BD439B0F2B0FC66900814B15 /* PictureOfDayBuilder.swift in Sources */,

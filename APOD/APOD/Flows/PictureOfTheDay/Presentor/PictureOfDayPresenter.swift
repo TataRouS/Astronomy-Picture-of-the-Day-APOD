@@ -29,7 +29,6 @@ class PictureOfDayPresenter {
     
     private let networkService: NetworkServiceProtocol
     private let dataStoreService: DataStoreServiceProtocol
-
     private var currentImageModel: DataImage?
     private var currentImage: UIImage?
     
