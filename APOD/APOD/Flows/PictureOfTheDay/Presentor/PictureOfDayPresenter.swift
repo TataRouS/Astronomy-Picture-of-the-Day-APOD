@@ -132,6 +132,7 @@ extension PictureOfDayPresenter: PictureOfDayProtocol {
     }
 }
 
+
 extension PictureOfDayPresenter: DataStoreServiceDelegate {
     func didReceiveError(_ error: DataStoreServiceError) {
         delegate?.showState(.error(.unknownError))

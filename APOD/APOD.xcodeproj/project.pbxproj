@@ -10,7 +10,7 @@
 		095960A34D32DA28CB6663E9 /* Pods_APOD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 891AA934619DC56C7EEBFAAF /* Pods_APOD.framework */; };
 		1D0DBDEF5A5039986A872A81 /* Pods_PictureOfTheDayWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 314A8A899BFF11A0C7B24B3D /* Pods_PictureOfTheDayWidgetExtension.framework */; };
 		8C08207F2B1287A3001D3B22 /* DatePictureBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C08207E2B1287A3001D3B22 /* DatePictureBuilder.swift */; };
-		8C1B40662AF6656C00E4231A /* DatePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B40652AF6656C00E4231A /* DatePictureViewController.swift */; };
+		8C1B40662AF6656C00E4231A /* DatePictureViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B40652AF6656C00E4231A /* DatePictureViewControllerOld.swift */; };
 		8C1B40682AF6698B00E4231A /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1B40672AF6698B00E4231A /* URLExtension.swift */; };
 		8C34BEFA2B19D8FE00D32F97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C34BEF92B19D8FE00D32F97 /* LaunchScreen.storyboard */; };
 		8C4DC52B2B273079003B6F90 /* DatePictureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4DC52A2B273079003B6F90 /* DatePictureViewModel.swift */; };
@@ -39,7 +39,7 @@
 		BD439B1F2B19073A00814B15 /* PictureOfDayErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD439B1E2B19073A00814B15 /* PictureOfDayErrorView.swift */; };
 		BD439B212B19092C00814B15 /* PictureOfDayLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD439B202B19092C00814B15 /* PictureOfDayLoadingView.swift */; };
 		BD439B3B2B1CC70A00814B15 /* FavoriteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD439B3A2B1CC70A00814B15 /* FavoriteBuilder.swift */; };
-		BDB4220F2C975690009E557F /* DatePictureViewControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4220E2C975690009E557F /* DatePictureViewControllerNew.swift */; };
+		BDB4220F2C975690009E557F /* DatePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4220E2C975690009E557F /* DatePictureViewController.swift */; };
 		BDF728152C7CA78400D66564 /* DatePictureLoadingViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF728142C7CA78400D66564 /* DatePictureLoadingViews.swift */; };
 		BDF728172C7CA7B300D66564 /* DatePictureErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF728162C7CA7B300D66564 /* DatePictureErrorView.swift */; };
 		BDF728192C7CA7E500D66564 /* DatePictureContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF728182C7CA7E500D66564 /* DatePictureContentView.swift */; };
@@ -109,7 +109,7 @@
 		6202E62833489CBA99158A63 /* Pods-PictureOfTheDayWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PictureOfTheDayWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-PictureOfTheDayWidgetExtension/Pods-PictureOfTheDayWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
 		891AA934619DC56C7EEBFAAF /* Pods_APOD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APOD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C08207E2B1287A3001D3B22 /* DatePictureBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureBuilder.swift; sourceTree = "<group>"; };
-		8C1B40652AF6656C00E4231A /* DatePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureViewController.swift; sourceTree = "<group>"; };
+		8C1B40652AF6656C00E4231A /* DatePictureViewControllerOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureViewControllerOld.swift; sourceTree = "<group>"; };
 		8C1B40672AF6698B00E4231A /* URLExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
 		8C34BEF92B19D8FE00D32F97 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C4DC52A2B273079003B6F90 /* DatePictureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureViewModel.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 		BD439B1E2B19073A00814B15 /* PictureOfDayErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfDayErrorView.swift; sourceTree = "<group>"; };
 		BD439B202B19092C00814B15 /* PictureOfDayLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfDayLoadingView.swift; sourceTree = "<group>"; };
 		BD439B3A2B1CC70A00814B15 /* FavoriteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBuilder.swift; sourceTree = "<group>"; };
-		BDB4220E2C975690009E557F /* DatePictureViewControllerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureViewControllerNew.swift; sourceTree = "<group>"; };
+		BDB4220E2C975690009E557F /* DatePictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureViewController.swift; sourceTree = "<group>"; };
 		BDF728142C7CA78400D66564 /* DatePictureLoadingViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureLoadingViews.swift; sourceTree = "<group>"; };
 		BDF728162C7CA7B300D66564 /* DatePictureErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureErrorView.swift; sourceTree = "<group>"; };
 		BDF728182C7CA7E500D66564 /* DatePictureContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePictureContentView.swift; sourceTree = "<group>"; };
@@ -387,8 +387,8 @@
 		BD439B092B0FC4FD00814B15 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8C1B40652AF6656C00E4231A /* DatePictureViewController.swift */,
-				BDB4220E2C975690009E557F /* DatePictureViewControllerNew.swift */,
+				8C1B40652AF6656C00E4231A /* DatePictureViewControllerOld.swift */,
+				BDB4220E2C975690009E557F /* DatePictureViewController.swift */,
 				BDF728182C7CA7E500D66564 /* DatePictureContentView.swift */,
 				BDF728162C7CA7B300D66564 /* DatePictureErrorView.swift */,
 				BDF728142C7CA78400D66564 /* DatePictureLoadingViews.swift */,
@@ -809,11 +809,11 @@
 				8CB794892AFFADCE00F4964E /* Favorite.swift in Sources */,
 				BD42F0692ADDA182006C0518 /* AppDelegate.swift in Sources */,
 				8C08207F2B1287A3001D3B22 /* DatePictureBuilder.swift in Sources */,
-				BDB4220F2C975690009E557F /* DatePictureViewControllerNew.swift in Sources */,
+				BDB4220F2C975690009E557F /* DatePictureViewController.swift in Sources */,
 				BD439B192B17A93C00814B15 /* DataStoreService.swift in Sources */,
 				DDA944C02B23BAB500C7C947 /* PictureOfDayViewModel.swift in Sources */,
 				BD439B0F2B0FC66900814B15 /* PictureOfDayBuilder.swift in Sources */,
-				8C1B40662AF6656C00E4231A /* DatePictureViewController.swift in Sources */,
+				8C1B40662AF6656C00E4231A /* DatePictureViewControllerOld.swift in Sources */,
 				8C1B40682AF6698B00E4231A /* URLExtension.swift in Sources */,
 				BD42F06B2ADDA182006C0518 /* SceneDelegate.swift in Sources */,
 				BD439B172B179E9600814B15 /* APODDataModel.xcdatamodeld in Sources */,

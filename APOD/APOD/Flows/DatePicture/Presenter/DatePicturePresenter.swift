@@ -61,6 +61,23 @@ class DatePicturePresenter {
         }
     }
     
+    private func requestDataForPicker(selectedDate: String) {
+        delegate?.showState(.loading)
+
+        networkService.fetchPhotoInfoForDatePicker (date: selectedDate)  { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            switch result {
+            case .success(let apod):
+                processSuccessResponse(apod)
+            case .failure(let error):
+                processFailureResponse(error)
+            }
+        }
+    }
+    
+    
     private func processSuccessResponse(_ responseModel: DataImage) {
         guard let image = extractUIImage(responseModel.hdurl) else {
             delegate?.showState(.error(.unknownError))
@@ -149,6 +166,11 @@ extension DatePicturePresenter: DatePictureProtocol {
     func didPullToRefresh() {
         requestData()
     }
+    
+    func didTapDatePicker(selectedDate: String) {
+        requestDataForPicker(selectedDate: selectedDate)
+    }
+    
     
 //    func deleteFavorite(apod: DataImage) {
 //        fileCache.addPictureToFavoriteIfNeeded(apod: apod)

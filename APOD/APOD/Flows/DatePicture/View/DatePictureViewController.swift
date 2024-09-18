@@ -1,284 +1,176 @@
 //
-//  DataPictureViewController.swift
+//  ViewController.swift
 //  APOD
 //
-//  Created by Irina on 04.11.2023.
+//  Created by Nata Kuznetsova on 16.10.2023.
 //
 
 import UIKit
 
-protocol DatePicturePresenterProtocol {
+protocol DatePictureProtocol {
     func viewDidLoad()
-    func addFavorite(apod: DataImage)
-    func deleteFavorite(apod: DataImage)
-    func checkFavoriteByDate(date: String) -> Bool
+    func didTapRetryButton()
+    func didTapFavoriteButton()
+    func didPullToRefresh()
+    func didTapNavBarActionButton()
+    func onImageTap()
+    func didTapDatePicker(selectedDate: String)
 }
 
-class DatePictureController: UIViewController {
+enum DatePictureScreenState {
+    case error(DatePictureError)
+    case loading
+    case loaded(DatePictureViewModel)
+}
+
+class DatePictureViewController: UIViewController {
     
     //MARK: - Properties
     
-    var presenter: DatePicturePresenterProtocol?
-    let networkController = NetworkService()
-    let dateFormatter = DateFormatter()
-    
+    var presenter: DatePictureProtocol?
     
     //MARK: - Private properties
     
-    private var model: DataImage?
-    private var starIsFilled: Bool = false
-    
-    private var labelTitleDate: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .white
-        label.textColor = .systemBlue
-        label.textAlignment = .center
-        label.text = "Select a date"
-        label.font = UIFont.systemFont(ofSize: 20, weight: .light)
-        //label.font = UIFont(name: "AvenirNext-DemiBold", size: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private var dateLabel: UIDatePicker = {
-        let datePicker = UIDatePicker()
-        datePicker.backgroundColor = .white
-        datePicker.datePickerMode = .date
-        
-        datePicker.addTarget(self,
-                             action: #selector(datePickerAction(sender:)),
-                             for: .valueChanged)
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        return datePicker
-    }()
-    
-    private let button: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "starNormal"), for: .normal)
-        //button.setImage(UIImage(systemName: "star"), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
-    
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        return scrollView
-    }()
-    
-    private var stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.alignment = .center
-        stackView.spacing = 20
-        return stackView
-    }()
-    
-    private var labelTitle: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .white
-        label.textColor = .black
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.font = UIFont(name: "AvenirNext-DemiBold", size: 20)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.isUserInteractionEnabled = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    private var labelDescriptions: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .white
-        label.textColor = .black
-        label.textAlignment = .justified
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private var scrollViewContentView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    //MARK: - Construction
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has nit been implemented")
-    }
+    private var contentView = DatePictureContentView()
+    private var loadingView = DatePictureLoadingViews()
+    private var errorView = DatePictureErrorView()
     
     //MARK: - Life cycle
-
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        presenter?.viewDidLoad()
-//    }
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        view.backgroundColor = .white
-//        setupView()
-//        setInitView()
-//        presenter?.viewDidLoad()
-//        
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapGesture))
-//        tapGesture.numberOfTapsRequired = 1
-//        tapGesture.numberOfTouchesRequired = 1
-//        imageView.addGestureRecognizer(tapGesture)
-//    }
-//    
-//    @objc func viewTapGesture(gesture:UITapGestureRecognizer) {
-//        guard let image = imageView.image else {
-//            return
-//        }
-//        let imagePreviewScreen = ImagePreviewScreenBuilder.build(image: image)
-//        imagePreviewScreen.modalPresentationStyle = .fullScreen
-//        present(imagePreviewScreen, animated: false)
-//    }
-
-    //MARK: - Functions
     
-    @objc func datePickerAction(sender: UIDatePicker) {
-        let selectedDate = dateFormatter.string(from: sender.date)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tabBarItem.title = "DatePicture"
+        setupViews()
+        presenter?.viewDidLoad()
+    }
+    
+    // MARK: - Functions
+    
+    @objc func didTapNavBarActionButton() {
+        presenter?.didTapNavBarActionButton()
+    }
+    
+    // MARK: - Private functions
+    
+    private func setupViews(){
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
+                                                            target: self,
+                                                            action: #selector(didTapNavBarActionButton))
         
-        networkController.fetchPhotoInfo(date: selectedDate) { [weak self] photoInfo in
-            if let photoInfo = photoInfo {
-                self?.updateUI(with: photoInfo)
-            }
+        contentView.onTapPresenterController = { [weak self] _ in
+            self?.presenter?.didTapFavoriteButton()
         }
-    }
+        contentView.onPullToRefreshr = { [weak self] in
+            self?.presenter?.didPullToRefresh()
+        }
+        contentView.onImageTap = { [weak self] in
+            self?.presenter?.onImageTap()
     
-    //MARK: - Private functions
-    
-    private func setupView() {
+        }
+        contentView.onDatePickerTap = { [weak self] (selectedDate) in
+            self?.presenter?.didTapDatePicker(selectedDate: selectedDate)
+        }
         
-        view.addSubview(labelTitleDate)
-        view.addSubview(dateLabel)
-        view.addSubview(button)
+        view.backgroundColor = .white
+
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        errorView.translatesAutoresizingMaskIntoConstraints = false
         
-        stackView.addArrangedSubview(labelTitle)
-        stackView.addArrangedSubview(imageView)
-        stackView.addArrangedSubview(labelDescriptions)
-        
-        scrollViewContentView.addSubview(stackView)
-        scrollView.addSubview(scrollViewContentView)
-        view.addSubview(scrollView)
-        
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tap))
-        button.addGestureRecognizer(gestureRecognizer)
-        
-        setupConstraints()
-    }
-    
-    private func setupConstraints() {
+        view.addSubview(errorView)
+        view.addSubview(loadingView)
+        view.addSubview(contentView)
         
         NSLayoutConstraint.activate([
+            errorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            errorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            errorView.topAnchor.constraint(equalTo: view.topAnchor),
+            errorView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            labelTitleDate.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            labelTitleDate.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            labelTitleDate.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
+            loadingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            loadingView.topAnchor.constraint(equalTo: view.topAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            button.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
-            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            button.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
-            button.widthAnchor.constraint(equalToConstant: 25),
-            button.heightAnchor.constraint(equalToConstant: 25),
-            
-            dateLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
-            
-            scrollView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
-            
-            scrollViewContentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            scrollViewContentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            scrollViewContentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            scrollViewContentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            
-            stackView.topAnchor.constraint(equalTo: scrollViewContentView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: scrollViewContentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: scrollViewContentView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor),
-            
-            labelTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            labelTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            
-            imageView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            imageView.heightAnchor.constraint(equalTo: view.widthAnchor),
-            
-            labelDescriptions.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            labelDescriptions.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-    
-    private func setInitView() {
-        labelDescriptions.text = ""
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateLabel.maximumDate = .now
-    }
-    
-    @objc func tap(){
-        print("Power")
-        if starIsFilled {
-            //button.setImage(UIImage(systemName: "star"), for: .normal)
-            button.setImage(UIImage(named: "starNormal"), for: .normal)
-            starIsFilled = false
-            presenter?.deleteFavorite(apod: model ?? DataImage())
-        }else{
-            //button.setImage(UIImage(systemName: "star.fill"), for: .normal)
-            button.setImage(UIImage(named: "starFavorite"), for: .normal)
-            starIsFilled = true
-            presenter?.addFavorite(apod: model ?? DataImage())
-        }
-    }
 }
-
-extension DatePictureController: DatePicturePresenterDelegate {
+  
+extension DatePictureViewController: DatePicturePresenterDelegate {
+    func present(_ viewController: UIViewController) {
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: false)
+    }
     
-    func updateUI(with photoinfo: DataImage){
-        networkController.fetchPhoto(from: photoinfo.url!) { [weak self] image in
-            DispatchQueue.main.async {
-                self?.imageView.image = image
-                self?.labelTitle.text = photoinfo.title
-                self?.labelDescriptions.text = photoinfo.explanation
-            }
-            self?.model = photoinfo
-            self?.model?.imageBinaryData = image?.pngData()
-        }
+    func showShareSheet(image: UIImage) {
+        let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        present(activityViewController, animated: true, completion: nil)
+    }
+    
+    func showState(_ newState: DatePictureScreenState) {
+        DispatchQueue.main.async { [weak self] in
+            self?.resetState()
         
-        starIsFilled = self.presenter?.checkFavoriteByDate(date: photoinfo.date ?? "") ?? false
-        DispatchQueue.main.async {
-            if self.starIsFilled {
-                //self.button.setImage(UIImage(systemName: "star.fill"), for: .normal)
-                self.button.setImage(UIImage(named: "starFavorite"), for: .normal)
-            }else{
-               // self.button.setImage(UIImage(systemName: "star"), for: .normal)
-                self.button.setImage(UIImage(named: "starNormal"), for: .normal)
+            switch newState {
+            case .loading:
+                self?.processLoadingState()
+            case .error(let error):
+                self?.processErrorState(error)
+            case .loaded(let model):
+                self?.processLoadedState(model)
             }
         }
     }
-    func showAlert() {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Не удалось получить данные", message: "Данные актуальны", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+    
+    func processLoadingState() {
+        loadingView.isHidden = false
+        loadingView.setActivityIndicatorAnimating(isAnimating: true)
+    }
+    
+    func processErrorState(_ error: DatePictureError) {
+        errorView.isHidden = false
+        
+        switch error {
+        case .unknownError:
+            let errorViewModel = DatePictureErrorViewModel(title: "Не получилось разобрать\nответ от сервера",
+                                                            subtitle: nil,
+                                                            buttonTitle: "Попробовать снова")
+            errorView.setupData(errorViewModel)
+        case .networkError(let error):
+            let errorViewModel = DatePictureErrorViewModel(title: "Упс! Произошла ошибка сети",
+                                                            subtitle: error.localizedDescription,
+                                                            buttonTitle: "Обновить")
+            errorView.setupData(errorViewModel)
         }
     }
     
+    func processLoadedState(_ contentModel: DatePictureViewModel) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        title = contentModel.title
+        tabBarItem.title = "DatePicture"
+        contentView.setupViewWithModel(contentModel)
+        contentView.isHidden = false
+    }
+    
+    func resetState() {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        title = ""
+        tabBarItem.title = "DatePicture"
+        contentView.isHidden = true
+        loadingView.isHidden = true
+        errorView.isHidden = true
+        
+        loadingView.setActivityIndicatorAnimating(isAnimating: false)
+    }
 }
 
+extension DatePictureViewController: DatePictureErrorViewDelegate {
+    func didTapRetryButton() {
+        presenter?.didTapRetryButton()
+    }
+}

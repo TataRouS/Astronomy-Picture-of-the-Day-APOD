@@ -17,11 +17,14 @@ class DatePictureContentView: UIView {
     var onTapPresenterController: ((Bool) -> Void)?
     var onPullToRefreshr: (() -> Void)?
     var onImageTap: (() -> Void)?
-
+    let dateFormatter = DateFormatter()
+    var onDatePickerTap: ((String) -> Void)?
+    
     //MARK: - Private properties
     
     private var model: DataImage?
     private var starIsFilled: Bool = false
+    
     
     private var labelTitleDate: UILabel = {
         let label = UILabel()
@@ -113,7 +116,6 @@ class DatePictureContentView: UIView {
         return view
     }()
 
-    private var starIsFilled: Bool = false
 
     //MARK: - Construction
     
@@ -171,12 +173,13 @@ class DatePictureContentView: UIView {
     
     @objc func datePickerAction(sender: UIDatePicker) {
         let selectedDate = dateFormatter.string(from: sender.date)
-        
-        networkController.fetchPhotoInfo(date: selectedDate) { [weak self] photoInfo in
-            if let photoInfo = photoInfo {
-                self?.updateUI(with: photoInfo)
-            }
-        }
+        onDatePickerTap?(selectedDate)
+    
+//        networkController.fetchPhotoInfo(date: selectedDate) { [weak self] photoInfo in
+//            if let photoInfo = photoInfo {
+//                self?.updateUI(with: photoInfo)
+//            }
+//        }
     }
     
     @objc func didTapFavoriteButton() {
@@ -230,7 +233,7 @@ class DatePictureContentView: UIView {
             
             button.addTarget(self, action: #selector(didTapFavoriteButton), for: .touchUpInside)
             
-            stackView.addArrangedSubview(addToFavoritesView)
+            stackView.addArrangedSubview(labelTitleDate)
             stackView.addArrangedSubview(labelTitle)
             stackView.addArrangedSubview(imageView)
             stackView.addArrangedSubview(labelDescriptions)

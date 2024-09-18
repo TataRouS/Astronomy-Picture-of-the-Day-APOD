@@ -12,6 +12,7 @@ protocol NetworkServiceProtocol {
     func requestData(completion: @escaping (Result<DataImage, Error>) -> Void) -> Void
     func fetchPhotoInfo(date: String, completion: @escaping (DataImage?) -> Void)
     func fetchPhoto(from url: URL, completion: @escaping (UIImage?) -> Void)
+    func fetchPhotoInfoForDatePicker(date: String, completion: @escaping (Result<DataImage, Error>) -> Void)
 }
 
 final class NetworkService: NetworkServiceProtocol {
@@ -87,6 +88,37 @@ final class NetworkService: NetworkServiceProtocol {
             }
             completion(photoInfoObject)
         }.resume()
+    }
+    
+    func fetchPhotoInfoForDatePicker(date: String, completion: @escaping (Result<DataImage, Error>) -> Void) {
+        let baseUrl = URL(string: Constants.serviceBaseURLString)
+        let query: [String: String] = [
+            "api_key": Constants.apiKey,
+            "date": date
+        ]
+        guard let queryUrl = baseUrl?.withQueries(query) else {
+            completion(.failure(NetworkError.dataError))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: queryUrl) { (data, response,error) in
+              guard let data = data else {
+                  completion(.failure(NetworkError.dataError))
+                  return
+              }
+              if let error = error {
+                  completion(.failure(error))
+                  return
+              }
+              do {
+                  let apod = try
+                  JSONDecoder().decode(DataImage.self, from: data)
+                  completion(.success(apod))
+              } catch {
+                  completion(.failure(error))
+              }
+          }
+          .resume()
     }
     
     func fetchPhoto(from url: URL, completion: @escaping (UIImage?) -> Void) {
