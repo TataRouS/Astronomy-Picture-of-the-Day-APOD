@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-protocol PictureOfDayErrorViewDelegate: AnyObject {
+protocol DailyPictureScreenErrorViewDelegate: AnyObject {
     func didTapRetryButton()
 }
     
-class PictureOfDayErrorView: UIView {
+class DailyPictureScreenErrorView: UIView {
     
     private struct Constants {
         static let labelFontName = "AvenirNext-DemiBold"
@@ -20,7 +20,7 @@ class PictureOfDayErrorView: UIView {
     
     //MARK: - Properties
 
-    var delegate: PictureOfDayErrorViewDelegate?
+    var delegate: DailyPictureScreenErrorViewDelegate?
     
     //MARK: - Private properties
 
@@ -72,7 +72,7 @@ class PictureOfDayErrorView: UIView {
     
     //MARK: - Functions
     
-    func setupData(_ errorModel: PictureOfDayErrorViewModel) {
+    func setupData(_ errorModel: DailyPictureScreenErrorViewModel) {
         titleLabel.text = errorModel.title
         subtitleLabel.text = errorModel.subtitle
         button.setTitle(errorModel.buttonTitle, for: .normal)

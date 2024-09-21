@@ -1,5 +1,5 @@
 //
-//  PictureOfDayPresenter.swift
+//  DailyPictureScreenPresenter.swift
 //  APOD
 //
 //  Created by Nata Kuznetsova on 17.11.2023.
@@ -7,19 +7,20 @@
 
 import UIKit
 
-protocol PictureOfDayPresenterDelegate: AnyObject {
-    func showState(_ newState: PictureOfDayScreenState)
+protocol DailyPictureScreenPresenterDelegate: AnyObject {
+    func showState(_ newState: DailyPictureScreenState)
     func showShareSheet(image: UIImage)
     func present(_ viewController: UIViewController)
 }
 
-enum PictureOfDayError: Error {
+enum DailyPictureScreenError: Error {
     case unknownError
     case networkError(Error)
 }
 
-class PictureOfDayPresenter {
-    typealias PresenterDelegate = PictureOfDayPresenterDelegate & UIViewController
+class DailyPictureScreenPresenter {
+    
+    typealias PresenterDelegate = DailyPictureScreenPresenterDelegate & UIViewController
     
     // MARK: - Properties
     
@@ -35,8 +36,7 @@ class PictureOfDayPresenter {
     
     // MARK: - Construction
     
-    init(networkService: NetworkServiceProtocol,
-         dataStoreService: DataStoreServiceProtocol) {
+    init(networkService: NetworkServiceProtocol, dataStoreService: DataStoreServiceProtocol) {
         self.networkService = networkService
         self.dataStoreService = dataStoreService
     }
@@ -45,7 +45,6 @@ class PictureOfDayPresenter {
     
     private func requestData() {
         delegate?.showState(.loading)
-
         networkService.requestData { [weak self] result in
             guard let self = self else {
                 return
@@ -71,10 +70,12 @@ class PictureOfDayPresenter {
         currentImageModel = responseModel
         currentImage = image
         
-        let contentModel = PictureOfDayViewModel(isFavorite: isFavorite,
-                                                 image: image,
-                                                 title: responseModel.title,
-                                                 description: responseModel.explanation)
+        let contentModel = DailyPictureScreenViewModel(
+            isFavorite: isFavorite,
+            image: image,
+            title: responseModel.title,
+            description: responseModel.explanation
+        )
         delegate?.showState(.loaded(contentModel))
     }
     
@@ -93,7 +94,7 @@ class PictureOfDayPresenter {
     }
 }
 
-extension PictureOfDayPresenter: PictureOfDayProtocol {
+extension DailyPictureScreenPresenter: DailyPictureScreenProtocol {
     func onImageTap() {
         guard let image = currentImage else {
             return
@@ -133,7 +134,7 @@ extension PictureOfDayPresenter: PictureOfDayProtocol {
     }
 }
 
-extension PictureOfDayPresenter: DataStoreServiceDelegate {
+extension DailyPictureScreenPresenter: DataStoreServiceDelegate {
     func didReceiveError(_ error: DataStoreServiceError) {
         delegate?.showState(.error(.unknownError))
     }

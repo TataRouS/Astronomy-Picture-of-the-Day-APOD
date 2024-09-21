@@ -12,7 +12,7 @@ protocol DatePicturePresenterDelegate: AnyObject {
     func showAlert()
 }
 
-class DatePicturePresenter {
+class DeprecatedDatePicturePresenter {
     typealias PresenterDelegate = DatePicturePresenterDelegate & UIViewController
     weak var delegate: PresenterDelegate?
     private var networkService = NetworkService()
@@ -23,7 +23,7 @@ class DatePicturePresenter {
             switch result {
             case .success(let apod):
                 DispatchQueue.global ().async {
-                    if let url = URL (string: apod.hdurl ?? ""), let data = try? Data(contentsOf: url){
+                    if let url = URL (string: apod.hdurl ?? ""), let _ = try? Data(contentsOf: url) {
                         self?.delegate?.updateUI(with: apod)
                     }
                 }
@@ -34,7 +34,7 @@ class DatePicturePresenter {
     }
 }
 
-extension DatePicturePresenter: DatePicturePresenterProtocol {
+extension DeprecatedDatePicturePresenter: DatePicturePresenterProtocol {
     func deleteFavorite(apod: DataImage) {
         fileCache.addPictureToFavoriteIfNeeded(apod: apod)
        // fileCache.deletePicture(date: apod)

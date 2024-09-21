@@ -89,7 +89,7 @@ final class DataStoreService {
         let fetchRequest: NSFetchRequest<PictureModelCD> =
         PictureModelCD.fetchRequest()
      //   let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "PictureModelCD")
-        fetchRequest.predicate = NSPredicate(format: "date = %@", argumentArray: [date ?? ""])
+        fetchRequest.predicate = NSPredicate(format: "date = %@", argumentArray: [date])
        guard let result = try? persistentContainer.viewContext.fetch(fetchRequest) else {
             return
         }
