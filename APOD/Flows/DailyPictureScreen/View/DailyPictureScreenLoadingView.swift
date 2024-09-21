@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class PictureOfDayLoadingView: UIView {
+class DailyPictureScreenLoadingView: UIView {
     
     //MARK: - Private properties
     

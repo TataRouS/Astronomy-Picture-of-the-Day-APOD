@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class PictureOfDayContentView: UIView {
+class DailyPictureScreenContentView: UIView {
     
     //MARK: - Properties
     
@@ -20,12 +20,7 @@ class PictureOfDayContentView: UIView {
     
     private let addToFavoriteButton: UIButton = {
         let button = UIButton()
-        //button.setTitleColor(.yellow, for: .normal)
-        //button.layer.cornerRadius = 15
-        //button.backgroundColor = .systemBlue
-       // button.tintColor = .red
         button.translatesAutoresizingMaskIntoConstraints = false
-        //button.setImage(UIImage(named: "starFavorite"), for: .normal)
         return button
     }()
     
@@ -65,9 +60,6 @@ class PictureOfDayContentView: UIView {
     private var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.isUserInteractionEnabled = true
-        //imageView.backgroundColor = .systemGray6
-        //imageView.layer.cornerRadius = 2
-        //imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -76,6 +68,14 @@ class PictureOfDayContentView: UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+    
+    private var dateLabel: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.backgroundColor = .white
+        datePicker.datePickerMode = .date
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        return datePicker
     }()
     
     private var starIsFilled: Bool = false
@@ -93,7 +93,7 @@ class PictureOfDayContentView: UIView {
     
     //MARK: - Functions
     
-    func setupViewWithModel(_ contentModel: PictureOfDayViewModel) {
+    func setupViewWithModel(_ contentModel: DailyPictureScreenViewModel) {
         scrollView.refreshControl?.endRefreshing()
         starIsFilled = contentModel.isFavorite
         updateFavoriteButtonState()
@@ -121,15 +121,15 @@ class PictureOfDayContentView: UIView {
         imageView.addGestureRecognizer(imageViewGestureRecognizer)
         
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .touchUpInside)
         scrollView.refreshControl = refreshControl
         
         addToFavoriteButton.addTarget(self, action: #selector(didTapFavoriteButton), for: .touchUpInside)
         
+        stackView.addArrangedSubview(dateLabel)
         stackView.addArrangedSubview(addToFavoritesView)
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(descriptionLabel)
-        //stackView.addArrangedSubview(addToFavoritesView)
         imageView.addSubview(addToFavoritesView)
         addToFavoritesView.addSubview(addToFavoriteButton)
         
@@ -161,11 +161,8 @@ class PictureOfDayContentView: UIView {
             imageView.widthAnchor.constraint(equalTo: widthAnchor),
             imageView.heightAnchor.constraint(equalTo: widthAnchor),
             
-//            addToFavoritesView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-//            addToFavoritesView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             addToFavoritesView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -20),
             addToFavoritesView.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 0),
-            //addToFavoritesView.heightAnchor.constraint(equalToConstant: 50),
             addToFavoritesView.widthAnchor.constraint(equalToConstant: 50),
             
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
@@ -185,11 +182,6 @@ class PictureOfDayContentView: UIView {
     }
     
     private func updateFavoriteButtonState() {
-        //let starImageName = starIsFilled ? "star.fill": "star"
-        //addToFavoriteButton.setImage(UIImage(systemName: starImageName), for: .normal)
-        //addToFavoriteButton.backgroundColor = starIsFilled ? .systemGray4: .systemBlue
-        //addToFavoriteButton.setTitle(starIsFilled ? "Remove from favorite": "Add to favorite", for: .normal)
-        
         let starImageName = starIsFilled ? "starFavorite": "starNormal"
         addToFavoriteButton.setImage(UIImage(named: starImageName), for: .normal)
 

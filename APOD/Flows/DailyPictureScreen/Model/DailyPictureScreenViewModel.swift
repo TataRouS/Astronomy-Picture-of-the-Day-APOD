@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct PictureOfDayViewModel {
+struct DailyPictureScreenViewModel {
     let isFavorite: Bool
     let image: UIImage?
     let title: String?

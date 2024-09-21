@@ -14,7 +14,7 @@ protocol DatePicturePresenterProtocol {
     func checkFavoriteByDate(date: String) -> Bool
 }
 
-class DatePictureController: UIViewController {
+class DeprecatedDatePictureController: UIViewController {
     
     //MARK: - Properties
     
@@ -45,7 +45,7 @@ class DatePictureController: UIViewController {
         datePicker.backgroundColor = .white
         datePicker.datePickerMode = .date
         
-        datePicker.addTarget(self,
+        datePicker.addTarget(DeprecatedDatePictureController.self,
                              action: #selector(datePickerAction(sender:)),
                              for: .valueChanged)
         datePicker.translatesAutoresizingMaskIntoConstraints = false
@@ -248,7 +248,7 @@ class DatePictureController: UIViewController {
     }
 }
 
-extension DatePictureController: DatePicturePresenterDelegate {
+extension DeprecatedDatePictureController: DatePicturePresenterDelegate {
     
     func updateUI(with photoinfo: DataImage){
         networkController.fetchPhoto(from: photoinfo.url!) { [weak self] image in

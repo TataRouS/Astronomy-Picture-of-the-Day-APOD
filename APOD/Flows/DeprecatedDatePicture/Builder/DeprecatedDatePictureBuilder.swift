@@ -7,10 +7,10 @@
 
 import UIKit
 
-struct DatePictureBuilder {
+struct DeprecatedDatePictureBuilder {
     static func build() -> UIViewController {
-        let viewController = DatePictureController()
-        let presenter = DatePicturePresenter()
+        let viewController = DeprecatedDatePictureController()
+        let presenter = DeprecatedDatePicturePresenter()
         viewController.presenter = presenter
         presenter.delegate = viewController
         return viewController

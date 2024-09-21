@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PictureOfDayErrorViewModel {
+struct DailyPictureScreenErrorViewModel {
     let title: String
     let subtitle: String?
     let buttonTitle: String
