@@ -165,7 +165,7 @@
 //    
 //    private func setupView() {
 //        
-//        view.addSubview(labelTitleDate)
+  //мшуц      view.addSubview(labelTitleDate)
 //        view.addSubview(dateLabel)
 //        view.addSubview(button)
 //        

@@ -233,11 +233,12 @@ class DatePictureContentView: UIView {
             
             button.addTarget(self, action: #selector(didTapFavoriteButton), for: .touchUpInside)
             
-            stackView.addArrangedSubview(labelTitleDate)
+            
             stackView.addArrangedSubview(labelTitle)
+            stackView.addArrangedSubview(labelTitleDate)
+            stackView.addArrangedSubview(dateLabel)
             stackView.addArrangedSubview(imageView)
             stackView.addArrangedSubview(labelDescriptions)
-            stackView.addArrangedSubview(dateLabel)
             imageView.addSubview(addToFavoritesView)
             addToFavoritesView.addSubview(button)
             
@@ -248,7 +249,7 @@ class DatePictureContentView: UIView {
             setupConstraints()
         }
         
-//
+
 //        view.addSubview(labelTitleDate)
 //        view.addSubview(dateLabel)
 //        view.addSubview(button)
@@ -272,7 +273,9 @@ class DatePictureContentView: UIView {
         NSLayoutConstraint.activate([
             
             
-            scrollView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10),
+            
+            
+            scrollView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
@@ -287,9 +290,14 @@ class DatePictureContentView: UIView {
             stackView.trailingAnchor.constraint(equalTo: scrollViewContentView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: scrollViewContentView.bottomAnchor),
             
-            labelTitleDate.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+         //   labelTitleDate.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
             labelTitleDate.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
             labelTitleDate.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
+            labelTitleDate.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -20),
+            
+            dateLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
+            
             
 //            button.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
 //            button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
@@ -297,26 +305,26 @@ class DatePictureContentView: UIView {
 //            button.widthAnchor.constraint(equalToConstant: 25),
 //            button.heightAnchor.constraint(equalToConstant: 25),
             
-            addToFavoritesView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
-            addToFavoritesView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-            addToFavoritesView.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
-            addToFavoritesView.widthAnchor.constraint(equalToConstant: 25),
-            addToFavoritesView.heightAnchor.constraint(equalToConstant: 25),
+//            addToFavoritesView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+//            addToFavoritesView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+//            addToFavoritesView.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
+//            addToFavoritesView.widthAnchor.constraint(equalToConstant: 25),
+//            addToFavoritesView.heightAnchor.constraint(equalToConstant: 25),
             
-            dateLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -100),
+       //     dateLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+    //        dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
             
-            labelTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            labelTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+    //        labelTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+   //         labelTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             
             imageView.widthAnchor.constraint(equalTo: widthAnchor),
             imageView.heightAnchor.constraint(equalTo: widthAnchor),
             
-//            addToFavoritesView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -20),
-//            
-//            addToFavoritesView.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 0),
-//            //addToFavoritesView.heightAnchor.constraint(equalToConstant: 50),
-//            addToFavoritesView.widthAnchor.constraint(equalToConstant: 50),
+          addToFavoritesView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -20),
+          
+           addToFavoritesView.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 0),
+            //addToFavoritesView.heightAnchor.constraint(equalToConstant: 50),
+            addToFavoritesView.widthAnchor.constraint(equalToConstant: 50),
 //            
             
             labelDescriptions.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
