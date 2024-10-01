@@ -143,6 +143,7 @@ class PictureOfDayContentView: UIView {
     private func setupConstraints() {
         
         NSLayoutConstraint.activate([
+            
             scrollView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
